@@ -6,13 +6,13 @@
 //
 //
 
-#ifndef __Leaf__leaf__
-#define __Leaf__leaf__
+#ifndef __leaves__leaf__
+#define __leaves__leaf__
 
 
-#include <stdio.h>
+#include "ofMain.h"
 
-class leaf : public ofBaseApp{
+class leaf {
     
 public:
     void setup();
@@ -35,4 +35,4 @@ private:
 };
 
 
-#endif /* defined(__Leaf__leaf__) */
+#endif /* defined(__leaves__leaf__) */

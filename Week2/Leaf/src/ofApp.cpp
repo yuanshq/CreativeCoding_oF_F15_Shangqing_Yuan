@@ -7,7 +7,7 @@ void ofApp::setup(){
     
     numLeaves = (int)ofRandom(5,15);
     for (int i = 0; i < numLeaves; i++){
-        Leaf tempLeaf;
+        leaf tempLeaf;
         tempLeaf.setup();
         leaves.push_back(tempLeaf);
     }
