@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>7F17B443-7109-4864-9397-694AB4D31FF0</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Leaf</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>2C88CB78A8B14C20C5A5896575BA0FCA1F5E6777</key>
 		<string>https://github.com/yuanshq/CreativeCoding_oF_F15_Shangqing_Yuan.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Week2/Leaf/Leaf.xcodeproj/project.xcworkspace</string>
+	<string>Week2/Leaf/Leaf.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>2C88CB78A8B14C20C5A5896575BA0FCA1F5E6777</key>

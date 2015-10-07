@@ -9,7 +9,7 @@ void ofApp::setup(){
     for (int i = 0; i < numLeaves; i++){
         leaf tempLeaf;
         tempLeaf.setup();
-        leaves.push_back(tempLeaf);
+        leaves.push_back(tempLeaf); // add a leaf with value tempLeaf to the end of vector
     }
 }
 
@@ -34,8 +34,9 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    leaves.clear();
+    leaves.clear(); //clear removes all elements in the vector reducing its size to 0.
     setup();
+
 }
 
 //--------------------------------------------------------------
@@ -50,7 +51,6 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
 }
 
 //--------------------------------------------------------------

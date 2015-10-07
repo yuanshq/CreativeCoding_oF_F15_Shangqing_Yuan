@@ -22,7 +22,7 @@ class ofApp : public ofBaseApp{
     
     private:
     
-        vector<leaf> leaves;
+        vector<leaf> leaves; // create an empty vector of leaf
         int numLeaves;
 		
 };
