@@ -1,1 +1,4 @@
 # CreativeCoding_oF_F15_Shangqing_Yuan
+###Brief Bio
+![](file:///Users/yuanshq/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/Wechat/1.2/a48fb627f5bcbcfa3ada979b6611fdf6/Message/MessageTemp/9e20f478899dc29eb19741386f9343c8/Image/1.pic.jpg)
+#### Hi, my name is Shangqing Yuan.  Im from China.  And my background is Electronic Engineering.  I'm super excited about what the combination of design and technology will produce. Openframeworks is a great starting point from where I hope to create something incredible with the intersection of Arduino, industrial design, interaction design and even projection mapping. Hope to make things happen.

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../src/Leaf.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:../src/Leaf.h">
+   </FileRef>
+   <FileRef
+      location = "group:../src/Branch.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:../src/Branch.h">
+   </FileRef>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>

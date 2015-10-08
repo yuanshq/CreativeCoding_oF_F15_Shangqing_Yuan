@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F3952A15-44C6-4F47-93D6-A7366026892B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Scissors_Blade</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2C88CB78A8B14C20C5A5896575BA0FCA1F5E6777</key>
+		<string>https://github.com/yuanshq/CreativeCoding_oF_F15_Shangqing_Yuan.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Week4/Scissors_Blade/Scissors_Blade.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2C88CB78A8B14C20C5A5896575BA0FCA1F5E6777</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yuanshq/CreativeCoding_oF_F15_Shangqing_Yuan.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2C88CB78A8B14C20C5A5896575BA0FCA1F5E6777</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2C88CB78A8B14C20C5A5896575BA0FCA1F5E6777</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CreativeCoding_oF_F15_Shangqing_Yuan</string>
+		</dict>
+	</array>
+</dict>
+</plist>
