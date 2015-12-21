@@ -95,6 +95,8 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels){
     int count = 0;
     float amp = 0;
     int startIndex[4] = {0,0,0,0};
+    vector<int> posVals;
+    posVals.clear();
     
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < bufferSize; j++){
@@ -116,8 +118,6 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels){
         numCounted+=bufferSize;
     }
     
-    
-    /////////////////////////////update position//////////////////////////////////
     int s = 0;
     int minDur = 3000;
     
@@ -128,32 +128,9 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels){
         }
     }
     
-    //vector<float> relativeStart[4];
     int relativeStart[4]={0,1,2,3};
     relativeStart[s] = 0;
     
-    for (unsigned i = 0; i < 4; i++){
-        relativeStart[i] = startIndex[i] - startIndex[s];
-    }
-    
-    int a = relativeStart[0];
-    int b = relativeStart[1];
-    int c = relativeStart[2];
-    int d = relativeStart[3];
-    
-    vector<int> posVals;
-    posVals.clear();
-    
-    checkLookup(posVals, a, b, c, d, resolutionX);
-    ofVec2f posSufTemp = ofVec2f( (float)posVals[0], (float)posVals[1]);
-    float triScaleX = (float)(ofGetWindowWidth()/(float)resolutionX);
-    float triScaleY = (float)(ofGetWindowHeight()/(float)resolutionY);
-    ofVec2f posCanTemp = ofVec2f( (float)posVals[0]*triScaleX + 50, (float)posVals[1]*triScaleY);
-    
-    ///////////////////////////update position///////////////////////////////////
-    
-    
-    //test code, get mic number and its time
     int isOk = 0;
     for (int i = 0; i < 4; i++) {
         if(0 != startIndex[i]) {
@@ -166,16 +143,23 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels){
             cout << i << ":" << startIndex[i] << endl;
             if(i == 3)
             {
-                cout<<"posSuface value: " <<posSufTemp <<endl;
-                //                cout<<"posCanTemp value: " <<posCanTemp <<endl;
-                posCan = posCanTemp;
-                posSur = posSufTemp;
                 isRepeat = 0;
             }
         }else{
-            //            posCan = ofVec2f(0, 0);
+            posCan = ofVec2f(0, 0);
         }
     }
+    int a = relativeStart[0];
+    int b = relativeStart[1];
+    int c = relativeStart[2];
+    int d = relativeStart[3];
+    
+    for (unsigned i = 0; i < 4; i++){
+        relativeStart[i] = startIndex[i] - startIndex[s];
+    }
+    
+    checkLookup(posVals, a, b, c, d, resolutionX);
+    ofVec2f posCanTemp = ofVec2f( (float)posVals[0] + 50, (float)posVals[1]);
     
 }
 
@@ -236,9 +220,6 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::playsound(){
     
-    //    LoudestFreq = FFT.getLoudestFrq();
-    //    cout<<"LoudestFreq: "<<LoudestFreq<<endl;
-    
     //Sound
     cout<<"sound"<<endl;
     
@@ -293,18 +274,13 @@ void ofApp::checkLookup(vector<int> &results, int a, int b, int c, int d, float 
     
     int count = 1;
     
-    int tolerance = 5;
-    
     for (int x = 0; x < resolutionX; x++){
         for (int y = 0; y < resolutionY; y++){
             
             if ( (abs(lookup[x][y][0] - a) +
                   abs(lookup[x][y][1] - b) +
                   abs(lookup[x][y][2] - c) +
-                  abs(lookup[x][y][3] - d)) < 4*tolerance ){
-                
-                outX += x;
-                outY += y;
+                  abs(lookup[x][y][3] - d)) < 10 ){
                 
                 count += 1;
                 
@@ -314,9 +290,6 @@ void ofApp::checkLookup(vector<int> &results, int a, int b, int c, int d, float 
     
     outX /= count;
     outY /= count;
-    
-    results.push_back(outX);
-    results.push_back(outY);
     
 }
 //--------------------------------------------------------------
@@ -349,6 +322,119 @@ void ofApp::keyPressed  (int key){
     if( key == 'e' ){
         soundStream.stop();
     }
+    if( key == 'g'){
+        
+        ofSetColor(225);
+        ofDrawBitmapString("AUDIO INPUT WAVE", 32, 20);
+        ofDrawBitmapString("press 's' to unpause the audio\n'e' to pause the audio", 31, 32);
+        
+        ofNoFill();
+        // draw the 1st channel:
+        ofPushStyle();
+        ofPushMatrix();
+        ofTranslate(0, 70, 0);
+        
+        ofSetColor(225);
+        ofDrawBitmapString("1st Channel", 4, 18);
+        
+        ofSetLineWidth(1);
+        ofRect(0, 0, 1024, 200);
+        
+        //    ofSetColor(0, 0, 0);
+        ofSetColor(245, 58, 135);
+        ofSetLineWidth(3);
+        
+        ofBeginShape();
+        for (unsigned int i = 0; i < channel_[0].size(); i++){
+            ofVertex(i*2, 100 -channel_[0][i]*180.0f);
+        }
+        ofEndShape(false);
+        
+        ofPopMatrix();
+        ofPopStyle();
+        
+        // draw the 2nd channel:
+        ofPushStyle();
+        ofPushMatrix();
+        ofTranslate(0, 270, 0);
+        
+        ofSetColor(225);
+        ofDrawBitmapString("2nd Channel", 4, 18);
+        
+        ofSetLineWidth(1);
+        ofRect(0, 0, 1024, 200);
+        
+        //    ofSetColor(0, 0, 0);
+        ofSetColor(245, 58, 135);
+        ofSetLineWidth(3);
+        
+        ofBeginShape();
+        for (unsigned int i = 0; i < channel_[1].size(); i++){
+            ofVertex(i*2, 100 -channel_[1][i]*180.0f);
+        }
+        ofEndShape(false);
+        
+        ofPopMatrix();
+        ofPopStyle();
+        
+        // draw the 3rd channel:
+        ofPushStyle();
+        ofPushMatrix();
+        ofTranslate(0, 470, 0);
+        
+        ofSetColor(225);
+        ofDrawBitmapString("3rd Channel", 4, 18);
+        
+        ofSetLineWidth(1);
+        ofRect(0, 0, 1024, 200);
+        
+        //    ofSetColor(0, 0, 0);
+        ofSetColor(245, 58, 135);
+        ofSetLineWidth(3);
+        
+        ofBeginShape();
+        for (unsigned int i = 0; i < channel_[2].size(); i++){
+            ofVertex(i*2, 100 -channel_[2][i]*180.0f);
+        }
+        ofEndShape(false);
+        
+        ofPopMatrix();
+        ofPopStyle();
+        
+        // draw the 4th channel:
+        ofPushStyle();
+        ofPushMatrix();
+        ofTranslate(0, 670, 0);
+        
+        ofSetColor(225);
+        ofDrawBitmapString("4th Channel", 4, 18);
+        
+        ofSetLineWidth(1);
+        ofRect(0, 0, 1024, 200);
+        
+        //    ofSetColor(0, 0, 0);
+        ofSetColor(245, 58, 135);
+        ofSetLineWidth(3);
+        
+        ofBeginShape();
+        for (unsigned int i = 0; i < channel_[3].size(); i++){
+            ofVertex(i*2, 100 -channel_[3][i]*180.0f);
+        }
+        ofEndShape(false);
+        
+        ofPopMatrix();
+        ofPopStyle();
+        
+        //    FFT.drawBars();
+        //    FFT.drawDebug();
+        
+        drawCounter++;
+        
+        ofSetColor(225);
+        string reportString = "buffers received: "+ofToString(bufferCounter)+"\ndraw routines called: "+ofToString(drawCounter)+"\nticks: " + ofToString(soundStream.getTickCount());
+        ofDrawBitmapString(reportString, 350, 32);
+    }
+
 }
 
 //--------------------------------------------------------------
